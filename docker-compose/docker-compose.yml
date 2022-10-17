@@ -18,8 +18,6 @@ services:
   trunk-player-frontend:
     restart: always
     image: trunkplayer/trunkplayer-ng-frontend:latest
-    ports:
-      - 3000:3000
     environment:
       NEXT_PUBLIC_BASEAPIURL: "${NEXT_PUBLIC_BASEAPIURL}"
       NEXT_PUBLIC_RECOMMENDEDBASEAPIURL: "${NEXT_PUBLIC_RECOMMENDEDBASEAPIURL}"
