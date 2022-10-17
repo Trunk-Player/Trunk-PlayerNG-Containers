@@ -1,9 +1,10 @@
-version: '3.8'
+version: "3.8"
 
 services:
   nginx:
     restart: always
-    image: trunkplayer/trunkplayer-ng-nginx:latest
+    build: ./trunkplayer-ng-nginx
+    # image: trunkplayer/trunkplayer-ng-nginx:latest
     ports:
       - 80:80
       - 443:443
@@ -126,7 +127,7 @@ services:
       EMAIL_USE_SSL: "${EMAIL_USE_SSL}"
       DEFAULT_FROM_EMAIL: "${DEFAULT_FROM_EMAIL}"
     volumes:
-    #  - /run/mysqld/mysqld.sock:/run/mysqld/mysqld.sock (Use me for system sql) 
+      #  - /run/mysqld/mysqld.sock:/run/mysqld/mysqld.sock (Use me for system sql)
       - ${STATIC_VOLUME_PATH}:/code/static
       - ${MEDIA_VOLUME_PATH}:/code/mediafiles
     depends_on:
@@ -148,7 +149,7 @@ services:
       - ${DATABASE_PATH}:/var/lib/mysql
 
   rabbitmq:
-    image: 'rabbitmq:management'
+    image: "rabbitmq:management"
     restart: always
     ports:
       - "15672:15672"
